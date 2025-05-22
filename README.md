@@ -54,14 +54,27 @@ uvicorn app.api.routes:app --reload
 
 ### Terminal Interface
 
-The terminal interface supports various commands and queries:
+The terminal interface supports various queries and commands:
+
+#### Movie Queries
 
 - Ask for recommendations: "Recommend me movies like Inception"
 - Get information about a movie: "Tell me about The Godfather"
 - Find movies by actor: "What are some good Tom Hanks movies?"
 - Find movies by director: "I like Christopher Nolan films"
 - Get genre recommendations: "I'm in the mood for a sci-fi movie"
-- Exit the chat: "exit" or "quit"
+
+#### Commands
+
+- `help`: Show sample queries and available commands
+- `history`: Display your conversation history for the current session
+- `sessions`: List all your saved chat sessions
+- `load <session_id>`: Load a specific chat session by its ID
+- `load all`: Load memories from all your previous sessions to enhance recommendations
+- `rename <new_name>`: Rename the current session
+- `delete`: Delete the current session (requires confirmation)
+- `clear`: Clear the conversation history for the current session (requires confirmation)
+- `exit` or `quit`: Exit the chat and display your session ID
 
 ### API Endpoints
 
