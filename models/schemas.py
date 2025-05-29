@@ -38,6 +38,20 @@ class ConversationHistory(BaseModel):
     )
 
 
+class Intent(BaseModel):
+    """Represents a recognized user intent"""
+    intent: str = Field(..., description="The recognized intent type")
+    confidence: float = Field(..., description="Confidence score for the intent (0-1)")
+    entities: Dict[str, List[str]] = Field(
+        default_factory=dict,
+        description="Entities extracted from the user query (e.g., movie titles, actor names)"
+    )
+    all_intents: Optional[Dict[str, float]] = Field(
+        None, 
+        description="All detected intents with their confidence scores"
+    )
+
+
 class ChatbotRequest(BaseModel):
     """Request model for chatbot API"""
     query: str = Field(..., description="User query text")
@@ -53,4 +67,8 @@ class ChatbotResponse(BaseModel):
     conversation_history: List[Dict[str, str]] = Field(
         ..., 
         description="Updated conversation history"
+    )
+    intent: Optional[Intent] = Field(
+        None,
+        description="Recognized intent from the user's query"
     )
